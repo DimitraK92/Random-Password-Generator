@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, NgIf],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
+  title = 'random-password-generator';
   length = 0;
   includeLetters = false;
   includeNumbers = false;
@@ -23,12 +28,15 @@ export class AppComponent {
   onChangeUseLetters() {
     this.includeLetters = !this.includeLetters;
   }
+
   onChangeUseNumbers() {
     this.includeNumbers = !this.includeNumbers;
   }
+
   onChangeUseSymbols() {
     this.includeSymbols = !this.includeSymbols;
   }
+
   onButtonClick() {
     const numbers = '1234567890';
     const letters = 'abcdefghijklmnopqrstuvwxyz';
@@ -51,8 +59,5 @@ export class AppComponent {
       generatedPassword += validChars[index];
     }
     this.password = generatedPassword;
-
   }
-
-
 }
